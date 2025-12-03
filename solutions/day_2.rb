@@ -28,8 +28,8 @@ class IdChecker
     id_str = id.to_s
     return false unless id_str.length.even?
 
-    first, second = id_str.chars.each_slice(id_str.length / 2).map(&:join)
-    first == second
+    sections = id_str.chars.each_slice(id_str.length / 2).map(&:join)
+    sections.uniq.length == 1
   end
 
   def range_from_string(str)
